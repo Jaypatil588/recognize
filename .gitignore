@@ -12,3 +12,7 @@ node_modules/
 
 # Build output
 dist/
+
+# Large ML model files
+*.model
+jaylogic/vosk-model/
