@@ -1,0 +1,109 @@
+Date: May 15, 2026, 7:15 PM
+Duration: 12 minutes
+Participants: Vedant, Tarang, Rishi, Jay
+
+[00:00] Vedant: Okay team, it's been a week since we decided to build Recognize. Where are we at? I know we've all been grinding, but let's sync up.
+
+[00:15] Tarang: Bhai, the backend is solid. I've got FastAPI running with Groq integration. Entity extraction is working at 92-95% accuracy. We're using Llama 3.3 70B and it's blazing fast.
+
+[00:30] Rishi: Yeah, and I've connected it to Neo4j. The graph database is storing entities and relationships beautifully. I implemented the vector search too - we can do semantic queries across all the meeting data.
+
+[00:45] Jay: Frontend is looking good. I've got the 3D visualization working with React Three Fiber. It's actually pretty sick - you can see the knowledge graph as this brain-like structure with nodes and connections.
+
+[01:00] Vedant: That's amazing progress! But remember what we talked about last week - we need to test this at a hackathon. I found one that's perfect timing. Submission deadline is tomorrow.
+
+[01:15] Tarang: Tomorrow?! Bhai, that's cutting it close. Do we have everything ready?
+
+[01:30] Rishi: The core functionality is there. We can upload transcripts, extract entities, build the graph, and query it. But deployment... that's going to be the challenge.
+
+[01:45] Jay: What about the demo? We need sample data that actually shows the value. We can't just upload random text.
+
+[02:00] Vedant: I was thinking - why don't we use our own meeting from last week? The one where we brainstormed this whole idea. It's meta, it's authentic, and it shows real use case.
+
+[02:15] Tarang: That's actually genius. We can show how Recognize captured our startup discussion, extracted concepts like "GraphRAG", "meeting intelligence", "monetization strategy" - all the stuff we talked about.
+
+[02:30] Rishi: And we can demonstrate the interconnection between that conversation and this one. Like, when we query "What did we discuss about AI startups?", it should pull context from both meetings.
+
+[02:45] Jay: Okay, but we need to make this bilingual. Our actual conversations are in Hinglish, not pure English. That's actually a differentiator - most tools only work well with clean English.
+
+[03:00] Vedant: Good point. Tarang, does Groq handle Hinglish well?
+
+[03:15] Tarang: Surprisingly well, actually. Llama 3.3 has been trained on multilingual data. I tested it with some Hindi text and it extracted entities correctly. The key is the prompt engineering.
+
+[03:30] Rishi: What about the hackathon requirements? They usually want you to use sponsor tools. Did we check which sponsors they have?
+
+[03:45] Vedant: Yeah, I looked into it. They have Groq, Neo4j, Zeabur, AgentField, TokenRouter, and a few others. We're already using Groq and Neo4j. We should integrate more to maximize our score.
+
+[04:00] Jay: What's AgentField? I haven't heard of that one.
+
+[04:15] Tarang: It's for multi-agent orchestration. Basically, instead of one monolithic process, you break it into specialized agents that work together. Like, one agent for document processing, one for entity extraction, one for graph building.
+
+[04:30] Rishi: That actually makes sense for our architecture. We could have parallel processing - multiple agents working on different chunks of a meeting simultaneously.
+
+[04:45] Vedant: And TokenRouter? What's that about?
+
+[05:00] Tarang: Smart routing between different AI models. It caches responses, handles fallbacks, optimizes costs. So if Groq is down or rate-limited, it automatically switches to a backup model.
+
+[05:15] Jay: That's actually really important for production. We can't have the system fail just because one API is having issues.
+
+[05:30] Rishi: Okay, so integration plan - we add AgentField for the processing pipeline, TokenRouter for model routing, and we deploy to Zeabur. That's six sponsor tools total.
+
+[05:45] Vedant: Perfect. But we need to be realistic about time. We have less than 24 hours. What can we actually integrate and test?
+
+[06:00] Tarang: I can add the AgentField decorators to our existing functions. It's not a complete rewrite, just wrapping our code with their agent framework. Maybe 2-3 hours of work.
+
+[06:15] Rishi: TokenRouter integration is similar. We're already making LLM calls, we just route them through TokenRouter instead. Another 2-3 hours.
+
+[06:30] Jay: And deployment to Zeabur? How long does that take?
+
+[06:45] Tarang: If everything goes smoothly, maybe an hour. But you know how deployments go - there's always something that breaks. We should budget 3-4 hours for deployment and testing.
+
+[07:00] Vedant: So we're looking at 8-10 hours of work total. If we split it up and work in parallel, we can get this done tonight and tomorrow morning.
+
+[07:15] Rishi: Wait, what about the pitch? We need to prepare what we're going to say to the judges.
+
+[07:30] Jay: And the README. Hackathons always want a good README with setup instructions, tech stack, problem statement, all that.
+
+[07:45] Vedant: Okay, new plan. Tarang, you handle AgentField and TokenRouter integration. Rishi, you prepare the demo data and test the queries. Jay, you polish the frontend and make sure the visualization is impressive. I'll write the README and prepare the pitch.
+
+[08:00] Tarang: What about Neo4j for deployment? We can't use localhost Neo4j on Zeabur.
+
+[08:15] Rishi: Neo4j Aura. They have a free tier - 200k nodes, perfect for a demo. I'll set that up and migrate our data.
+
+[08:30] Jay: And the demo script? We need to practice what we're going to show.
+
+[08:45] Vedant: Four-minute demo. I introduce the problem, Tarang explains the tech stack, Rishi shows the live demo with our meeting data, Jay demonstrates the query feature. Clean and simple.
+
+[09:00] Tarang: What if something breaks during the demo? We need a backup plan.
+
+[09:15] Rishi: We run it locally as backup. If Zeabur deployment fails, we show localhost. Judges care more about the working product than where it's hosted.
+
+[09:30] Jay: Alright, I'm feeling good about this. We've got a solid product, we're using the right tools, and we have a clear plan.
+
+[09:45] Vedant: One more thing - let's make sure we emphasize the problem we're solving. 80% of meeting knowledge lost within 48 hours. That's a real pain point that every company faces.
+
+[10:00] Tarang: And our solution is unique. Nobody else is doing GraphRAG for meeting intelligence with 3D visualization. That's our moat.
+
+[10:15] Rishi: Plus the multilingual support. Most tools choke on Hinglish, but we handle it naturally because we built it with our own conversations.
+
+[10:30] Jay: Okay, I have one concern. What if they ask about scalability? Like, can this handle a company with 1000 employees and 100 meetings per day?
+
+[10:45] Vedant: Neo4j can handle millions of nodes. Groq processes 300+ tokens per second. Zeabur auto-scales. We're production-ready from day one. That's the answer.
+
+[11:00] Tarang: And we can show the math. 100 meetings per day, average 30 minutes each, that's 3000 minutes of content. With Groq's speed, we can process that in under an hour.
+
+[11:15] Rishi: What about pricing? If they ask how we'd monetize?
+
+[11:30] Vedant: Freemium model. Free tier for up to 10 meetings per month. Pro tier at $29/month for unlimited meetings. Enterprise tier at $99/month with team features, SSO, advanced analytics.
+
+[11:45] Jay: That's actually really reasonable. Most companies would easily pay $29/month if it saves them even one hour of searching for old meeting notes.
+
+[12:00] Tarang: Alright team, we've got our plan. Let's execute. Vedant, send us the task breakdown. We'll sync up in 4 hours to check progress.
+
+[12:15] Rishi: And let's create a group chat for quick updates. If anyone gets blocked, we help immediately.
+
+[12:30] Jay: One last thing - let's make sure we enjoy this. We're building something cool, something that could actually help people. That's what matters.
+
+[12:45] Vedant: Absolutely. Win or lose, we're learning and building together. That's the real value. Alright, let's go build Recognize!
+
+[13:00] All: Let's do this! 🚀

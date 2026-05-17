@@ -1,0 +1,115 @@
+Meeting Intelligence Platform - Demo Meeting Transcript
+Date: May 16, 2026
+Duration: 45 minutes
+Participants: Vedant, Tarang, Rishi, Jay
+
+[00:00:15] Vedant: Hey everyone, thanks for joining. Let's discuss our hackathon project - the meeting intelligence platform. We need to finalize the architecture today.
+
+[00:01:30] Tarang: Agreed. I've been working on the backend with Groq integration. The entity extraction is working really well with Llama 3.3. We're getting accurate results for identifying key topics and decisions.
+
+[00:02:45] Rishi: That's great! I've been focusing on the Neo4j context graph. We can now visualize relationships between meetings and participants. The 3D visualization is coming together nicely.
+
+[00:03:20] Jay: Nice work guys. I'm handling the frontend with React Three Fiber. The brain visualization animation looks pretty cool. Should we show the demo with the pieces coming together?
+
+[00:04:10] Vedant: Definitely. Let's make sure we integrate all the sponsor tools properly. We're using AgentField for multi-agent orchestration, right?
+
+[00:05:00] Tarang: Yes, I've set up five agents - document processor, entity extractor, graph builder, query handler, and orchestrator. They work in parallel which speeds things up significantly.
+
+[00:06:15] Rishi: For the context graph, I'm storing entities as nodes and relationships as edges. We can query past meetings semantically. For example, if someone asks "What did we decide about pricing?", it retrieves relevant context from all previous meetings.
+
+[00:07:30] Jay: That's powerful. For the UI, I'm thinking we show participant names in circular nodes. When you click on a node, it shows what that person said during the meeting. Size of nodes represents how much they contributed.
+
+[00:08:45] Vedant: Perfect. What about the MOM generation? Are we using Groq for that too?
+
+[00:09:20] Tarang: Yes, Groq generates structured Minutes of Meeting with sections for decisions, action items, discussion points, and next steps. It's fast and accurate.
+
+[00:10:40] Rishi: We should also highlight the persistent memory aspect using Evermind. The system remembers context across meetings, so it gets smarter over time.
+
+[00:11:55] Jay: Good point. For the demo, let's show: upload a meeting transcript, watch entities extract in real-time, see the 3D graph build, then query it with a question.
+
+[00:13:10] Vedant: Agreed. Let's also emphasize the real-world problem we're solving - companies lose 80% of meeting knowledge within 48 hours. Our system prevents that.
+
+[00:14:30] Tarang: Right. And we're using Butterbase for the backend database, TokenRouter for model optimization, and Zeabur for deployment. That's six sponsor tools total.
+
+[00:15:45] Rishi: The graph database is key. We can show organizational hierarchy, track who reports to whom, and visualize team dynamics over time.
+
+[00:17:00] Jay: For the pitch, I suggest we start with the problem, show a live demo, explain the tech stack with sponsor logos, then discuss the business impact.
+
+[00:18:20] Vedant: Sounds good. Let's assign action items. Tarang, can you ensure the Groq integration is bulletproof? We can't have API errors during the demo.
+
+[00:19:35] Tarang: On it. I'll add error handling and fallbacks. Also testing with different meeting transcript formats.
+
+[00:20:50] Rishi: I'll polish the Neo4j queries and make sure the graph visualization is smooth. No lag when rendering nodes.
+
+[00:22:05] Jay: I'll finalize the UI animations and make sure the demo flow is seamless. Practice the transitions between screens.
+
+[00:23:20] Vedant: Great. One more thing - we need sample data for the demo. Can we use this meeting as an example?
+
+[00:24:35] Tarang: Absolutely. I'll process this transcript through our system and we can show the output. It'll be meta - using our tool to analyze itself.
+
+[00:25:50] Rishi: Love it. The graph will show connections between our discussion topics - hackathon, architecture, sponsor tools, demo strategy.
+
+[00:27:05] Jay: We should also prepare for questions. Judges will ask about scalability, accuracy, and real-world deployment.
+
+[00:28:20] Vedant: Good thinking. Tarang, what's our accuracy rate for entity extraction?
+
+[00:29:35] Tarang: With Groq's Llama 3.3, we're seeing 92-95% accuracy on entity extraction. Speaker diarization is around 88% accurate, which is pretty good for a hackathon project.
+
+[00:30:50] Rishi: For scalability, Neo4j can handle millions of nodes easily. We're only dealing with hundreds for a typical company, so we're good there.
+
+[00:32:05] Jay: And for deployment, Zeabur makes it one-click. We can show the live URL during the demo.
+
+[00:33:20] Vedant: Perfect. Let's talk about the business model briefly. How would we monetize this?
+
+[00:34:35] Tarang: Freemium model - free for up to 10 meetings per month, then $29/month for unlimited. Enterprise tier at $99/month with team features and advanced analytics.
+
+[00:35:50] Rishi: We could also offer API access for companies that want to integrate our context graph into their existing tools.
+
+[00:37:05] Jay: And white-label solutions for larger enterprises who want their own branded version.
+
+[00:38:20] Vedant: Great ideas. Market size is huge - 10 million companies in the US alone, average 5 meetings per week. That's a massive TAM.
+
+[00:39:35] Tarang: Alright, let's wrap up. Final checklist: Groq integration tested, Neo4j graph polished, UI animations smooth, demo script ready, pitch deck prepared.
+
+[00:40:50] Rishi: I'll create the pitch deck with architecture diagrams and sponsor logos. Should be done by tonight.
+
+[00:42:05] Jay: I'll record a backup demo video in case anything goes wrong with the live demo.
+
+[00:43:20] Vedant: Excellent. Let's meet again in 2 hours to do a full run-through. Everyone good with that?
+
+[00:44:35] Tarang: Works for me.
+
+[00:44:40] Rishi: Yep, see you then.
+
+[00:44:45] Jay: Sounds good!
+
+[00:45:00] Vedant: Perfect. Let's build something amazing. Meeting adjourned.
+
+---
+
+MEETING SUMMARY:
+- Discussed hackathon project architecture
+- Reviewed sponsor tool integrations (6 tools total)
+- Assigned action items to each team member
+- Planned demo strategy and pitch approach
+- Discussed business model and monetization
+- Scheduled follow-up meeting in 2 hours
+
+KEY DECISIONS:
+1. Use Groq for entity extraction and MOM generation
+2. Neo4j for context graph with 3D visualization
+3. Demo flow: upload → extract → graph → query
+4. Freemium pricing model: $0/$29/$99 per month
+5. Meta demo using this meeting as example
+
+ACTION ITEMS:
+- Tarang: Test Groq integration, add error handling
+- Rishi: Polish Neo4j queries, create pitch deck
+- Jay: Finalize UI animations, record backup demo
+- Vedant: Coordinate final run-through in 2 hours
+
+PARTICIPANTS CONTRIBUTION:
+- Vedant: 12 statements (Meeting lead, strategy)
+- Tarang: 11 statements (Backend, technical implementation)
+- Rishi: 10 statements (Graph database, visualization)
+- Jay: 10 statements (Frontend, UI/UX)

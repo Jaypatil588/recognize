@@ -263,25 +263,6 @@ async def upload_document(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/stats")
-async def get_stats():
-    """Get graph statistics"""
-    with driver.session() as session:
-        result = session.run("""
-            MATCH (e:Entity)
-            WITH count(e) as entities
-            MATCH (c:Chunk)
-            WITH entities, count(c) as chunks
-            MATCH ()-[r:RELATES_TO]->()
-            RETURN entities, chunks, count(r) as relationships
-        """).single()
-    
-    return {
-        "entities": result["entities"] if result else 0,
-        "chunks": result["chunks"] if result else 0,
-        "relationships": result["relationships"] if result else 0
-    }
-
 @app.get("/graph")
 async def get_graph():
     """Get full graph data"""
@@ -291,7 +272,7 @@ async def get_graph():
             "MATCH (a:Entity)-[r:RELATES_TO]->(b:Entity) RETURN a.id as source, b.id as target, r.relation as relation LIMIT 200"
         ).data()
     
-    return {"nodes": entities, "links": relationships}
+    return {"nodes": entities, "edges": relationships}
 
 @app.post("/query")
 async def query_graph(req: QueryRequest):

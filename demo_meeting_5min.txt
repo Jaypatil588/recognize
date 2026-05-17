@@ -1,0 +1,34 @@
+Meeting Intelligence Platform - Demo Session
+Date: May 15, 2026, 7:11 PM
+Duration: 5 minutes
+Participants: Vedant, Tarang, Rishi, Jay
+
+[7:11:07 PM] Tarang: ki jo audio file hai woh mein aggregate isliye use karne hai bas text dikhane
+
+[7:11:17 PM] Vedant: ya kis cheez ke liye use karein MOM nahi audio file ka toh kaam nahi hai
+
+[7:11:27 PM] Rishi: transcription apne ko mil gaya toh toh hum jo meeting ka data hai woh anusar woh apan samajh le poora
+
+[7:11:37 PM] Jay: transcript aaya woh database ko bhejenge phir uska nirdaya toh jo woh usko
+
+[7:11:47 PM] Tarang: bas transcribe karne ka apna kaam bas yeh jo person bol raha hai uska yaana chahiye ki yeh
+
+[7:11:57 PM] Vedant: nahi yeh time stamp par kuch bola hai bas utne kahin karna hai aur yeh ka kaam uske aage toh hai nahi hua hai
+
+[7:23:07 PM] Rishi: aur isko apan organization ke structure ke hisaab se rakh sakte hain ki organization mein ye manager hai iske neeche
+
+[7:23:17 PM] Jay: loge manager ke upar yeh aadmi hai aisa waisa jaaya nahi gaya
+
+[7:31:47 PM] Vedant: Ajay ko ki dev bhai toh kuch crazy bana diya woh tumhe toh kar
+
+[7:32:07 PM] Tarang: bhai hila toh main raha hoon abhi ghar pe jaake ye dekhke
+
+[7:32:37 PM] Rishi: gaad damn add bhai toh aisa kuch animation kar ki yeh brain hai pehle aur phir brain ke pieces agar doosre
+
+[7:32:47 PM] Jay: toh zoom karega toh brain aata aisa kar sakta hai thoda crazy kar sakta hai thoda thoda kar
+
+[7:33:37 PM] Vedant: isko toh jis chunk par click karega na us par bhoot aayega is par click karega toh is chunk ke baare mein aayega
+
+[7:34:28 PM] Rishi: par gole mein dikhna chahiye logon ka naam gole mein dikhna chahiye haan toh gole pe click kiya toh is bande ne kya bola hai wo dikhaye
+
+[7:35:27 PM] Jay: aur tum logon ko iska API bhi lagega na jab yeh run hoga tab ise isko hit karoge seedha

@@ -1,0 +1,271 @@
+{
+  "meeting": {
+    "id": "meeting_20260516_hackathon",
+    "title": "Hackathon Project Planning - Meeting Intelligence Platform",
+    "date": "2026-05-16",
+    "duration_minutes": 45,
+    "participants": [
+      {
+        "id": "user_vedant",
+        "name": "Vedant",
+        "role": "Team Lead",
+        "email": "vedant@example.com",
+        "statements_count": 12,
+        "talk_time_seconds": 420,
+        "contribution_percentage": 28
+      },
+      {
+        "id": "user_tarang",
+        "name": "Tarang",
+        "role": "Backend Developer",
+        "email": "tarang@example.com",
+        "statements_count": 11,
+        "talk_time_seconds": 390,
+        "contribution_percentage": 26
+      },
+      {
+        "id": "user_rishi",
+        "name": "Rishi",
+        "role": "Graph Database Engineer",
+        "email": "rishi@example.com",
+        "statements_count": 10,
+        "talk_time_seconds": 360,
+        "contribution_percentage": 24
+      },
+      {
+        "id": "user_jay",
+        "name": "Jay",
+        "role": "Frontend Developer",
+        "email": "jay@example.com",
+        "statements_count": 10,
+        "talk_time_seconds": 330,
+        "contribution_percentage": 22
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Groq",
+      "type": "TECHNOLOGY",
+      "description": "AI inference platform using Llama 3.3 for entity extraction and MOM generation"
+    },
+    {
+      "name": "Neo4j",
+      "type": "TECHNOLOGY",
+      "description": "Graph database for storing context and relationships between meetings"
+    },
+    {
+      "name": "AgentField",
+      "type": "TECHNOLOGY",
+      "description": "Multi-agent orchestration platform with 5 specialized agents"
+    },
+    {
+      "name": "Butterbase",
+      "type": "TECHNOLOGY",
+      "description": "Backend database for storing meeting transcripts and metadata"
+    },
+    {
+      "name": "TokenRouter",
+      "type": "TECHNOLOGY",
+      "description": "Model routing platform for optimization and cost reduction"
+    },
+    {
+      "name": "Zeabur",
+      "type": "TECHNOLOGY",
+      "description": "Deployment platform for one-click deployment"
+    },
+    {
+      "name": "React Three Fiber",
+      "type": "TECHNOLOGY",
+      "description": "3D visualization library for brain animation and graph rendering"
+    },
+    {
+      "name": "Meeting Intelligence Platform",
+      "type": "PROJECT",
+      "description": "Hackathon project for analyzing meetings and generating insights"
+    },
+    {
+      "name": "Freemium Model",
+      "type": "CONCEPT",
+      "description": "Pricing strategy with free tier and paid plans at $29 and $99 per month"
+    },
+    {
+      "name": "Entity Extraction",
+      "type": "CONCEPT",
+      "description": "Process of identifying key topics, people, and concepts from meeting transcripts"
+    },
+    {
+      "name": "Context Graph",
+      "type": "CONCEPT",
+      "description": "Knowledge graph connecting entities and relationships across meetings"
+    },
+    {
+      "name": "Minutes of Meeting",
+      "type": "CONCEPT",
+      "description": "Structured summary including decisions, action items, and discussion points"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Tarang",
+      "target": "Groq",
+      "relation": "IMPLEMENTS",
+      "description": "Tarang is implementing Groq integration for entity extraction"
+    },
+    {
+      "source": "Rishi",
+      "target": "Neo4j",
+      "relation": "DEVELOPS",
+      "description": "Rishi is developing the Neo4j context graph"
+    },
+    {
+      "source": "Jay",
+      "target": "React Three Fiber",
+      "relation": "USES",
+      "description": "Jay is using React Three Fiber for 3D visualization"
+    },
+    {
+      "source": "Vedant",
+      "target": "Meeting Intelligence Platform",
+      "relation": "LEADS",
+      "description": "Vedant leads the meeting intelligence platform project"
+    },
+    {
+      "source": "Groq",
+      "target": "Entity Extraction",
+      "relation": "ENABLES",
+      "description": "Groq enables accurate entity extraction with 92-95% accuracy"
+    },
+    {
+      "source": "Neo4j",
+      "target": "Context Graph",
+      "relation": "STORES",
+      "description": "Neo4j stores the context graph with nodes and relationships"
+    },
+    {
+      "source": "AgentField",
+      "target": "Meeting Intelligence Platform",
+      "relation": "ORCHESTRATES",
+      "description": "AgentField orchestrates the multi-agent processing pipeline"
+    },
+    {
+      "source": "Meeting Intelligence Platform",
+      "target": "Freemium Model",
+      "relation": "MONETIZES_VIA",
+      "description": "Platform uses freemium pricing model for monetization"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision_001",
+      "decision": "Use Groq for entity extraction and MOM generation",
+      "made_by": "Tarang",
+      "timestamp": "00:05:00",
+      "rationale": "Llama 3.3 provides 92-95% accuracy and fast inference"
+    },
+    {
+      "id": "decision_002",
+      "decision": "Implement 3D brain visualization with animated nodes",
+      "made_by": "Jay",
+      "timestamp": "00:07:30",
+      "rationale": "Creates engaging demo and shows relationships visually"
+    },
+    {
+      "id": "decision_003",
+      "decision": "Use this meeting as meta demo example",
+      "made_by": "Vedant",
+      "timestamp": "00:23:20",
+      "rationale": "Shows real-world usage and creates compelling narrative"
+    },
+    {
+      "id": "decision_004",
+      "decision": "Freemium pricing: $0/$29/$99 per month",
+      "made_by": "Tarang",
+      "timestamp": "00:34:35",
+      "rationale": "Standard SaaS model with clear value tiers"
+    }
+  ],
+  "action_items": [
+    {
+      "id": "action_001",
+      "task": "Test Groq integration and add error handling",
+      "assigned_to": "Tarang",
+      "due_date": "2026-05-16",
+      "priority": "high",
+      "status": "in_progress"
+    },
+    {
+      "id": "action_002",
+      "task": "Polish Neo4j queries and create pitch deck",
+      "assigned_to": "Rishi",
+      "due_date": "2026-05-16",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "action_003",
+      "task": "Finalize UI animations and record backup demo",
+      "assigned_to": "Jay",
+      "due_date": "2026-05-16",
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "id": "action_004",
+      "task": "Coordinate final run-through meeting",
+      "assigned_to": "Vedant",
+      "due_date": "2026-05-16",
+      "priority": "high",
+      "status": "pending"
+    }
+  ],
+  "discussion_points": [
+    "Hackathon project architecture and sponsor tool integration",
+    "Backend implementation with Groq and multi-agent orchestration",
+    "Neo4j context graph for semantic meeting search",
+    "3D visualization with React Three Fiber",
+    "Demo strategy and pitch approach",
+    "Business model and monetization strategy",
+    "Scalability and accuracy metrics",
+    "Deployment strategy using Zeabur"
+  ],
+  "next_steps": [
+    "Complete Groq integration testing",
+    "Finalize Neo4j graph visualization",
+    "Polish UI animations and demo flow",
+    "Create pitch deck with architecture diagrams",
+    "Record backup demo video",
+    "Conduct full run-through in 2 hours",
+    "Prepare for judge questions on scalability and accuracy"
+  ],
+  "kpis": {
+    "vedant": {
+      "talk_time_seconds": 420,
+      "interruptions": 2,
+      "questions_asked": 5,
+      "sentiment_score": 0.85,
+      "engagement_score": 9.2
+    },
+    "tarang": {
+      "talk_time_seconds": 390,
+      "interruptions": 1,
+      "questions_asked": 3,
+      "sentiment_score": 0.88,
+      "engagement_score": 9.0
+    },
+    "rishi": {
+      "talk_time_seconds": 360,
+      "interruptions": 0,
+      "questions_asked": 2,
+      "sentiment_score": 0.90,
+      "engagement_score": 8.8
+    },
+    "jay": {
+      "talk_time_seconds": 330,
+      "interruptions": 1,
+      "questions_asked": 4,
+      "sentiment_score": 0.87,
+      "engagement_score": 8.9
+    }
+  }
+}

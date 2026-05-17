@@ -1,0 +1,75 @@
+Date: May 9, 2026, 3:30 PM
+Duration: 8 minutes
+Participants: Vedant, Tarang, Rishi, Jay
+
+[00:00] Vedant: Guys, I've been thinking about this for weeks now. We need to talk about where AI is taking startups. Like, seriously, the landscape is completely different from even six months ago.
+
+[00:15] Tarang: Bhai, I was just reading about how Groq is changing the game with their LPU architecture. 300 tokens per second! That's insane. Traditional GPUs can't even come close to that speed.
+
+[00:30] Rishi: Yeah, but speed isn't everything, right? I mean, what about accuracy? What about the actual use cases? We can't just chase shiny new tech.
+
+[00:45] Jay: Rishi has a point, but think about it - faster inference means real-time applications become viable. Like, imagine building a meeting assistant that gives you insights while you're still in the meeting, not hours later.
+
+[01:00] Vedant: That's exactly what I'm talking about! The barrier to entry for AI startups is dropping like crazy. You don't need millions in funding to build something powerful anymore. Groq's free tier, Neo4j Aura, all these tools are democratizing AI.
+
+[01:20] Tarang: True, but that also means more competition. Everyone and their dog is building an AI startup now. How do you differentiate?
+
+[01:35] Rishi: Domain expertise. That's the key. AI is just a tool, yaar. The real value is understanding a specific problem deeply. Like, we could build a generic chatbot, or we could solve a real pain point in enterprise knowledge management.
+
+[01:50] Jay: Speaking of which, I was looking at the meeting intelligence space. Companies like Otter.ai and Fireflies are doing transcription, but nobody's really cracking the knowledge graph angle. Like, connecting insights across meetings over time.
+
+[02:10] Vedant: Exactly! That's a billion-dollar problem right there. Companies lose so much institutional knowledge when people leave or when decisions get buried in old meeting notes.
+
+[02:25] Tarang: The tech stack for that would be interesting though. You'd need good NLP for entity extraction, a graph database like Neo4j for relationships, and probably some kind of RAG system for querying.
+
+[02:40] Rishi: GraphRAG specifically. I've been reading about it - it's like regular RAG but you traverse the knowledge graph instead of just doing vector similarity search. Way more context-aware.
+
+[02:55] Jay: Okay, but let's be real - how do you monetize something like that? Freemium model? Enterprise licensing?
+
+[03:10] Vedant: I think it's got to be B2B SaaS. Target companies with 50+ employees where meeting overload is a real problem. Price it per user, maybe $29 per month for SMBs, $99 for enterprise with advanced features.
+
+[03:30] Tarang: What about the AI costs though? If you're running Groq or Claude on every meeting transcript, that adds up fast.
+
+[03:45] Rishi: That's where smart architecture comes in. You cache embeddings, you batch process, you use cheaper models for simple tasks and expensive ones only when needed. TokenRouter is built exactly for this - smart routing between models.
+
+[04:00] Jay: I like this. But we'd need a killer demo for investors or customers. Something visual, something that makes people go "wow, I need this."
+
+[04:15] Vedant: 3D visualization. Imagine showing a company's knowledge graph as this living, breathing brain. You can see how concepts connect, who's talking about what, where the knowledge silos are.
+
+[04:30] Tarang: React Three Fiber could do that. We could build it with WebGL, make it interactive. Click on a node, see the actual meeting excerpts, drill down into relationships.
+
+[04:45] Rishi: Okay, I'm getting excited about this. But let's think about the MVP. What's the absolute minimum we need to prove the concept?
+
+[05:00] Jay: Upload a transcript, extract entities, show them in a graph, let people query it. That's it. Four core features.
+
+[05:15] Vedant: And we could build that in what, a week? Two weeks max if we're doing it properly?
+
+[05:30] Tarang: Backend would take me maybe 3-4 days. FastAPI, Neo4j setup, Groq integration for entity extraction. The hard part is making the extraction accurate.
+
+[05:45] Rishi: I can handle the graph logic and the query system. GraphRAG implementation, vector search, that's my jam.
+
+[06:00] Jay: Frontend and visualization - give me a week. React, Three.js, make it look good. We need this to be impressive visually.
+
+[06:15] Vedant: So we're looking at two weeks for an MVP. Then what? How do we validate this is actually solving a problem people will pay for?
+
+[06:30] Tarang: Beta testing with real companies. Find 5-10 teams willing to try it, get feedback, iterate fast.
+
+[06:45] Rishi: And we need metrics. How much time are we saving them? How many times do they use the query feature? What's the engagement rate?
+
+[07:00] Jay: What about hackathons? We could test this at a hackathon first, get feedback from judges who understand the space.
+
+[07:15] Vedant: That's actually brilliant. Hackathons force you to build fast, and you get immediate feedback. Plus, if we use sponsor tools like Groq, Neo4j, Zeabur, we might even win some prizes.
+
+[07:30] Tarang: Alright, so here's the plan - we build an MVP in two weeks, test it at a hackathon, use that feedback to refine it, then approach real customers.
+
+[07:45] Rishi: I'm in. This feels like something that could actually work. The timing is right, the tech is ready, and the problem is real.
+
+[08:00] Jay: Let's do it. But we need a name. Something catchy, something that captures what we're doing.
+
+[08:15] Vedant: How about "Recognize"? Like, we're helping companies recognize patterns in their meetings, recognize knowledge that would otherwise be lost.
+
+[08:30] Tarang: I like it. Simple, memorable, and it actually describes what we do.
+
+[08:45] Rishi: Recognize it is. Alright team, let's build something amazing.
+
+[09:00] Jay: Meeting adjourned. Let's get to work!

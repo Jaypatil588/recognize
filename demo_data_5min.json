@@ -1,0 +1,213 @@
+{
+  "meeting": {
+    "id": "meeting_20260515_demo",
+    "title": "Meeting Intelligence Platform - Technical Discussion",
+    "date": "2026-05-15",
+    "start_time": "19:11:00",
+    "duration_minutes": 5,
+    "participants": [
+      {
+        "id": "user_vedant",
+        "name": "Vedant",
+        "role": "Product Lead",
+        "statements_count": 3,
+        "talk_time_seconds": 75,
+        "contribution_percentage": 25
+      },
+      {
+        "id": "user_tarang",
+        "name": "Tarang",
+        "role": "Backend Engineer",
+        "statements_count": 3,
+        "talk_time_seconds": 75,
+        "contribution_percentage": 25
+      },
+      {
+        "id": "user_rishi",
+        "name": "Rishi",
+        "role": "Data Engineer",
+        "statements_count": 3,
+        "talk_time_seconds": 75,
+        "contribution_percentage": 25
+      },
+      {
+        "id": "user_jay",
+        "name": "Jay",
+        "role": "Frontend Engineer",
+        "statements_count": 3,
+        "talk_time_seconds": 75,
+        "contribution_percentage": 25
+      }
+    ]
+  },
+  "entities": [
+    {
+      "name": "Audio File Processing",
+      "type": "CONCEPT",
+      "description": "Processing audio files for transcription without MOM generation"
+    },
+    {
+      "name": "Transcription Service",
+      "type": "TECHNOLOGY",
+      "description": "Service that converts audio to text with speaker identification"
+    },
+    {
+      "name": "Database",
+      "type": "TECHNOLOGY",
+      "description": "Storage system for meeting transcripts and metadata"
+    },
+    {
+      "name": "Speaker Identification",
+      "type": "CONCEPT",
+      "description": "Identifying who is speaking at specific timestamps"
+    },
+    {
+      "name": "Organizational Structure",
+      "type": "CONCEPT",
+      "description": "Hierarchy showing managers and reporting relationships"
+    },
+    {
+      "name": "MP4 File",
+      "type": "TECHNOLOGY",
+      "description": "Video file format for meeting recordings"
+    },
+    {
+      "name": "Live File Processing",
+      "type": "CONCEPT",
+      "description": "Real-time processing of meeting files"
+    },
+    {
+      "name": "Timestamp",
+      "type": "CONCEPT",
+      "description": "Time markers for when each person speaks"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Tarang",
+      "target": "Audio File Processing",
+      "relation": "EXPLAINS",
+      "description": "Tarang explains audio file is for text display, not MOM"
+    },
+    {
+      "source": "Vedant",
+      "target": "Database",
+      "relation": "MANAGES",
+      "description": "Vedant manages transcript flow to database"
+    },
+    {
+      "source": "Rishi",
+      "target": "Speaker Identification",
+      "relation": "IMPLEMENTS",
+      "description": "Rishi implements speaker identification with timestamps"
+    },
+    {
+      "source": "Jay",
+      "target": "Organizational Structure",
+      "relation": "DESIGNS",
+      "description": "Jay designs organizational hierarchy visualization"
+    },
+    {
+      "source": "Transcription Service",
+      "target": "Database",
+      "relation": "SENDS_TO",
+      "description": "Transcription service sends data to database"
+    },
+    {
+      "source": "Speaker Identification",
+      "target": "Timestamp",
+      "relation": "USES",
+      "description": "Speaker identification uses timestamps"
+    }
+  ],
+  "key_points": [
+    "Audio file used for text display, not MOM generation",
+    "Transcription sent to database for processing",
+    "Core functionality: speaker identification with timestamps",
+    "Organizational structure mapping (managers and hierarchy)",
+    "MP4 to live file format conversion",
+    "Transcription service is first step in pipeline"
+  ],
+  "technical_decisions": [
+    {
+      "decision": "Use audio file only for text transcription",
+      "made_by": "Tarang",
+      "timestamp": "00:00",
+      "rationale": "Audio file not needed for MOM generation"
+    },
+    {
+      "decision": "Send transcripts to database for processing",
+      "made_by": "Vedant",
+      "timestamp": "00:20",
+      "rationale": "Centralized storage and processing pipeline"
+    },
+    {
+      "decision": "Focus on speaker identification and timestamps",
+      "made_by": "Rishi",
+      "timestamp": "00:40",
+      "rationale": "Core transcription functionality"
+    },
+    {
+      "decision": "Map organizational structure in system",
+      "made_by": "Jay",
+      "timestamp": "01:10",
+      "rationale": "Show hierarchy and reporting relationships"
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Implement audio file transcription",
+      "assigned_to": "Tarang",
+      "priority": "high",
+      "status": "in_progress"
+    },
+    {
+      "task": "Set up database pipeline for transcripts",
+      "assigned_to": "Vedant",
+      "priority": "high",
+      "status": "in_progress"
+    },
+    {
+      "task": "Build speaker identification with timestamps",
+      "assigned_to": "Rishi",
+      "priority": "high",
+      "status": "in_progress"
+    },
+    {
+      "task": "Design organizational structure visualization",
+      "assigned_to": "Jay",
+      "priority": "medium",
+      "status": "pending"
+    }
+  ],
+  "kpis": {
+    "vedant": {
+      "talk_time_seconds": 75,
+      "interruptions": 0,
+      "questions_asked": 0,
+      "sentiment_score": 0.80,
+      "engagement_score": 8.5
+    },
+    "tarang": {
+      "talk_time_seconds": 75,
+      "interruptions": 0,
+      "questions_asked": 0,
+      "sentiment_score": 0.85,
+      "engagement_score": 8.7
+    },
+    "rishi": {
+      "talk_time_seconds": 75,
+      "interruptions": 0,
+      "questions_asked": 0,
+      "sentiment_score": 0.82,
+      "engagement_score": 8.6
+    },
+    "jay": {
+      "talk_time_seconds": 75,
+      "interruptions": 0,
+      "questions_asked": 0,
+      "sentiment_score": 0.83,
+      "engagement_score": 8.5
+    }
+  }
+}

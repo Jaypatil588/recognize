@@ -9,3 +9,4 @@ python-docx
 python-multipart
 numpy
 networkx
+groq
