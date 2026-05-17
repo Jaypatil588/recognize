@@ -369,6 +369,11 @@ Upload these to see Recognize in action with real team conversations!
 
 ## 🤝 Team
 
+<div align="center">
+  <img src="team.jpg" alt="Team Recognize" width="600"/>
+  <p><i>Team Recognize - Building the future of meeting intelligence</i></p>
+</div>
+
 - **Vedant** - Product Lead & Strategy
 - **Tarang** - Backend Engineer & AI Integration
 - **Rishi** - Data Engineer & Graph Architecture
