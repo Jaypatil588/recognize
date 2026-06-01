@@ -44,18 +44,12 @@ function useSpeechInput(onTranscript, personNames) {
             fd.append('custom_dictionary', JSON.stringify(personNames))
           }
 
-          let text = ''
           const res = await fetch(VOICEOS_URL, { method: 'POST', body: fd })
-          if (res.ok) {
-            const data = await res.json()
-            text = data.text ?? data.transcript ?? ''
-          } else if (res.status === 401) {
-            const fallback = await api.transcribe(blob, personNames)
-            text = fallback.text ?? fallback.transcript ?? ''
-            toast('VoiceOS unauthorized — switched to Groq fallback', 'error')
-          } else {
+          if (!res.ok) {
             throw new Error(`VoiceOS ${res.status}`)
           }
+          const data = await res.json()
+          const text = data.text ?? data.transcript ?? ''
 
           onTranscript(text)
         } catch (err) {
@@ -252,10 +246,10 @@ export function ChatPanel() {
       <div className="messages" ref={boxRef}>
         {messages.length === 0 && (
           <div className="welcome-msg">
-            <strong style={{ color: 'var(--neutral)', display: 'block', marginBottom: 6 }}>GraphRAG ready</strong>
-            <strong>Local</strong> — entity vector search + graph traversal + Claude.<br />
-            <strong>Global</strong> — community summaries for thematic/holistic questions.<br /><br />
-            Upload documents, then optionally run <em>Build communities</em> in the sidebar for global queries.
+            <strong style={{ color: 'var(--neutral)', display: 'block', marginBottom: 6 }}>Neo4j graph search ready</strong>
+            <strong>Local</strong> — searches hosted Neo4j entities and relationships directly from this Vercel frontend.<br />
+            <strong>Global</strong> — searches stored community summaries.<br /><br />
+            Upload, ingestion, embeddings, and LLM answering are backend-only features and are not called by this self-contained build.
           </div>
         )}
         {messages.map((m, i) => (

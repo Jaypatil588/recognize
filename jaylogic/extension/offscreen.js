@@ -147,7 +147,7 @@ async function start({ streamId, wsUrl }) {
   };
 
   ws.onerror = () => {
-    safeSendStatus({ error: "WebSocket error. Verify backend is running at ws://localhost:8765/ws." });
+    safeSendStatus({ error: `WebSocket error. Verify ${wsUrl} is reachable.` });
   };
 
   ws.onclose = () => {

@@ -11,12 +11,14 @@
     "tabCapture",
     "offscreen",
     "storage",
+    "tabs",
     "activeTab",
     "scripting"
   ],
   "host_permissions": [
     "http://localhost/*",
-    "ws://localhost/*"
+    "https://*/*",
+    "wss://*/*"
   ],
   "background": {
     "service_worker": "background.js",
@@ -34,6 +36,16 @@
         "content.css"
       ],
       "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://localhost/*",
+        "https://*/*"
+      ],
+      "js": [
+        "page-bridge.js"
+      ],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [

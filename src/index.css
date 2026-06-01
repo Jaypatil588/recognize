@@ -1910,6 +1910,65 @@ body {
   max-width: 560px;
 }
 
+.home-extension-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 18px;
+  background: rgba(8,10,16,0.85);
+  border: 1px solid rgba(108,114,120,0.16);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.home-extension-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.home-extension-kicker {
+  font-family: var(--font-label);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--tertiary);
+}
+
+.home-extension-main p {
+  max-width: 680px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: rgba(247,245,242,0.55);
+}
+
+.home-extension-download {
+  margin-top: 4px;
+  text-decoration: none;
+}
+
+.home-extension-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 22px;
+  color: rgba(247,245,242,0.58);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.home-extension-steps li::marker {
+  color: var(--tertiary);
+  font-family: var(--font-label);
+  font-weight: 700;
+}
+
+.home-extension-steps span {
+  color: rgba(247,245,242,0.9);
+  font-family: var(--font-label);
+  font-size: 0.9em;
+}
+
 /* ── Google Meet mockup ── */
 .home-meet-mockup {
   border-radius: 14px;

@@ -51,7 +51,11 @@ async function refreshState() {
 }
 
 startBtn.addEventListener("click", async () => {
-  const wsUrl = wsUrlInput.value.trim() || "ws://localhost:8765/ws";
+  const wsUrl = wsUrlInput.value.trim();
+  if (!wsUrl) {
+    setStatus("Enter the deployed WebSocket endpoint.", true);
+    return;
+  }
   const result = await chrome.runtime.sendMessage({ type: "UI_START", wsUrl });
   if (!result?.ok) {
     setStatus(result?.error || "Failed to start", true);

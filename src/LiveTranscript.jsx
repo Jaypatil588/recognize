@@ -19,43 +19,37 @@ export function LiveTranscript({ open, onClose }) {
   const [words, setWords] = useState([])      // [{speaker, word, ts}]
   const [speakers, setSpeakers] = useState([])
   const scrollRef = useRef(null)
-  const wsRef = useRef(null)
 
   useEffect(() => {
     if (!open) return
 
-    function connect() {
-      const ws = new WebSocket('ws://localhost:8765/feed')
-      wsRef.current = ws
+    function onExtensionMessage(event) {
+      if (event.source !== window) return
+      if (event.data?.source !== 'recognize-extension') return
+      const msg = event.data.payload
+      if (!msg) return
 
-      ws.onopen = () => setConnected(true)
-
-      ws.onmessage = (e) => {
-        try {
-          const msg = JSON.parse(e.data)
-          if (msg.event === 'init') {
-            setSpeakers(msg.speakers)
-          } else if (msg.speaker && msg.word) {
-            setWords(prev => [...prev.slice(-500), { speaker: msg.speaker, word: msg.word, ts: Date.now() }])
-          }
-        } catch (_) {}
+      if (msg.event === 'init') {
+        setSpeakers(msg.speakers || [])
+        setConnected(true)
+        return
       }
 
-      ws.onclose = () => {
-        setConnected(false)
-        // Retry every 3s
-        setTimeout(() => { if (wsRef.current === ws) connect() }, 3000)
+      if (msg.event === 'tracks') {
+        setConnected(true)
+        return
       }
 
-      ws.onerror = () => ws.close()
+      if (msg.speaker && msg.word) {
+        setConnected(true)
+        setWords(prev => [...prev.slice(-500), { speaker: msg.speaker, word: msg.word, ts: Date.now() }])
+      }
     }
 
-    connect()
+    window.addEventListener('message', onExtensionMessage)
 
     return () => {
-      const ws = wsRef.current
-      wsRef.current = null
-      ws?.close()
+      window.removeEventListener('message', onExtensionMessage)
     }
   }, [open])
 
@@ -114,7 +108,7 @@ export function LiveTranscript({ open, onClose }) {
           <div className="lt-empty">
             {connected
               ? 'Waiting for speech... (first ~1 second will show as unknown)'
-              : 'Connecting to jaylogic server at localhost:8765...'}
+              : 'Open Recognize.AI in Google Meet, enter the diarization endpoint, then press Start.'}
           </div>
         ) : (
           utterances.map((u, i) => (
@@ -134,7 +128,7 @@ export function LiveTranscript({ open, onClose }) {
         {connected ? (
           <span style={{ color: '#34d399' }}>● jaylogic connected</span>
         ) : (
-          <span style={{ color: '#f87171' }}>○ reconnecting...</span>
+          <span style={{ color: '#f87171' }}>○ waiting for extension</span>
         )}
       </div>
     </div>

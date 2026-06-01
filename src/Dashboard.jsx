@@ -181,9 +181,15 @@ export function Dashboard() {
   const [stats, setStats] = useState({ docs: 0, entities: 0, chunks: 0, communities: 0 })
 
   useEffect(() => {
-    api.graph().then(setGraphData).catch(() => {})
-    api.stats().then(setStats).catch(() => {})
-  }, [])
+    Promise.all([api.graph(), api.stats()])
+      .then(([nextGraph, nextStats]) => {
+        setGraphData(nextGraph)
+        setStats(nextStats)
+      })
+      .catch(err => {
+        console.error('Dashboard Neo4j load failed:', err)
+      })
+  }, [setGraphData])
 
   const { speakers, typeDistArr, radarData, trend, personNodes, connCount } = useGraphAnalytics(graphData)
 

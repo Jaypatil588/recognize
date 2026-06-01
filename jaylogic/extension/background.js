@@ -1,4 +1,4 @@
-const DEFAULT_WS_URL = "ws://localhost:8765/ws";
+const DEFAULT_WS_URL = "";
 let offscreenReady = false;
 let running = false;
 let connected = false;
@@ -51,6 +51,10 @@ async function getCurrentTabId() {
 }
 
 async function startCapture(wsUrl) {
+  if (!wsUrl) {
+    throw new Error("Enter the deployed diarization WebSocket URL before starting.");
+  }
+
   await ensureOffscreenDocument();
 
   const tabId = await getCurrentTabId();
@@ -61,7 +65,7 @@ async function startCapture(wsUrl) {
   await chrome.runtime.sendMessage({
     type: "OFFSCREEN_START",
     streamId,
-    wsUrl: wsUrl || DEFAULT_WS_URL
+    wsUrl
   });
 
   running = true;
@@ -73,6 +77,18 @@ async function stopCapture() {
   running = false;
   connected = false;
   notifyState();
+}
+
+async function broadcastToRecognizePages(payload) {
+  const tabs = await chrome.tabs.query({});
+  await Promise.allSettled(
+    tabs
+      .filter(tab => tab.id !== undefined && /^https?:\/\//.test(tab.url || ""))
+      .map(tab => chrome.tabs.sendMessage(tab.id, {
+        type: "RECOGNIZE_PAGE_EVENT",
+        payload
+      }))
+  );
 }
 
 function notifyState(extra = {}) {
@@ -130,6 +146,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
     if (msg.type === "OFFSCREEN_WORD") {
       chrome.runtime.sendMessage({ type: "WORD", payload: msg.payload }).catch(() => {});
+      await broadcastToRecognizePages(msg.payload);
       sendResponse({ ok: true });
       return;
     }
@@ -139,12 +156,14 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
         chrome.tabs.sendMessage(activeTabId, { type: "TRACKS", payload: msg.payload }).catch((err) => {
         });
       }
+      await broadcastToRecognizePages(msg.payload);
       sendResponse({ ok: true });
       return;
     }
 
     if (msg.type === "OFFSCREEN_INIT") {
       chrome.runtime.sendMessage({ type: "INIT", payload: msg.payload }).catch(() => {});
+      await broadcastToRecognizePages(msg.payload);
       sendResponse({ ok: true });
       return;
     }

@@ -1,12 +1,12 @@
 # Jaylogic Chrome Extension
 
-Chrome extension that streams Google Meet tab video frames to the local jaylogic backend and displays live speaker-labeled words.
+Chrome extension that streams Google Meet tab video frames to a deployed diarization WebSocket endpoint and displays live speaker-labeled words.
 
 ## Backend contract
 
-This extension targets `jaylogic/server.py` on:
+This extension targets the WebSocket URL entered in the popup, for example:
 
-- `ws://localhost:8765/ws`
+- `wss://your-diarization-host.example/ws`
 
 Outgoing frame payload:
 
@@ -21,6 +21,9 @@ Incoming backend messages:
 {"speaker": "person_1", "word": "hello", "start_ms": 1200, "end_ms": 1400}
 ```
 
+The extension relays these messages to any open Recognize web app tab through `page-bridge.js`.
+The Vercel page receives them with `window.postMessage`; the page does not host a WebSocket server.
+
 ## Install
 
 1. Open `chrome://extensions`
@@ -31,14 +34,11 @@ Incoming backend messages:
 
 ## Run
 
-1. Start backend:
-   - `cd /Users/senpai/Desktop/Projects/RecognizeAI/recognize/jaylogic`
-   - `python server.py`
-2. Open your Google Meet tab.
-3. Click the extension icon.
-4. Keep `ws://localhost:8765/ws` or set your custom URL.
-5. Click **Start**.
-6. Watch transcript lines stream in popup.
+1. Open your Google Meet tab.
+2. Click the extension icon.
+3. Enter your deployed diarization WebSocket URL.
+4. Click **Start**.
+5. Watch transcript lines stream in popup.
 
 ## Notes
 

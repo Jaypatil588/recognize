@@ -1,7 +1,7 @@
 /**
  * Jaylogic Content Script
- * Auto-starts screen capture on page load, streams video frames to the local server,
- * and displays an always-visible UI panel with face counts and transcripts.
+ * Displays an always-visible UI panel with face counts and transcripts.
+ * Capture and WebSocket streaming run through the extension popup and offscreen document.
  */
 
 if (!window.__jaylogicContentLoaded) {
@@ -78,54 +78,7 @@ if (!window.__jaylogicContentLoaded) {
 
   // ── WebSocket ─────────────────────────────────────────────────────────────
   function connectWS() {
-    try {
-      ws = new WebSocket("ws://localhost:8765/ws");
-    } catch (e) {
-      console.warn("[jaylogic] WS connect failed:", e);
-      return;
-    }
-
-    ws.onopen = () => {
-      wsConnected = true;
-      setStatus(true);
-      console.log("[jaylogic] Connected to server");
-    };
-
-    ws.onmessage = (e) => {
-      try {
-        const msg = JSON.parse(e.data);
-
-        // Update face count from tracks
-        if (msg.event === "tracks") {
-          const count = msg.tracks ? msg.tracks.length : 0;
-          if (count !== faceCount) {
-            faceCount = count;
-            document.getElementById("jl-face-count").textContent = count;
-          }
-          if (msg.tracks && msg.bounding_boxes) {
-            renderTracks(msg.tracks);
-          }
-        }
-
-        // Init event — speakers locked
-        if (msg.event === "init") {
-          faceCount = msg.speakers ? msg.speakers.length : 0;
-          document.getElementById("jl-face-count").textContent = faceCount;
-        }
-
-        // Transcribed word
-        if (msg.speaker && msg.word) {
-          appendTranscript(msg.speaker, msg.word);
-        }
-      } catch (_) { }
-    };
-
-    ws.onclose = () => {
-      wsConnected = false;
-      setStatus(false);
-    };
-
-    ws.onerror = () => { wsConnected = false; };
+    throw new Error("content.js does not open WebSockets directly. Start capture from the extension popup.");
   }
 
   function stopWS() {
@@ -252,12 +205,14 @@ if (!window.__jaylogicContentLoaded) {
             const currentSpeaker = wrap.dataset.speaker;
             const newName = input.value.trim();
             console.log("[jaylogic] Sending set_name:", currentSpeaker, "->", newName);
-            if (ws && ws.readyState === WebSocket.OPEN && currentSpeaker) {
-              ws.send(JSON.stringify({
-                event: "set_name",
+            if (currentSpeaker) {
+              chrome.runtime.sendMessage({
+                type: "CONTENT_SET_NAME",
                 speaker: currentSpeaker,
                 name: newName
-              }));
+              }).catch((err) => {
+                console.error("[jaylogic] set_name failed:", err);
+              });
             }
             input.blur();
           }
@@ -311,6 +266,20 @@ if (!window.__jaylogicContentLoaded) {
     });
   }
 
-  // Autostart when loaded
-  setTimeout(autostartCapture, 1000);
+  chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+    if (msg.type === "PING_CONTENT") {
+      sendResponse({ loaded: true });
+      return;
+    }
+
+    if (msg.type === "TRACKS" && msg.payload?.tracks) {
+      const count = msg.payload.tracks.length;
+      faceCount = count;
+      const countEl = document.getElementById("jl-face-count");
+      if (countEl) countEl.textContent = String(count);
+      renderTracks(msg.payload.tracks);
+      sendResponse({ ok: true });
+      return;
+    }
+  });
 }

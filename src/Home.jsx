@@ -580,6 +580,35 @@ export function Home() {
           </div>
         </section>
 
+        {/* ── Extension download ── */}
+        <section className="home-section">
+          <div className="home-section-label">CHROME EXTENSION</div>
+          <h2 className="home-section-title">Load Recognize into Google Meet.</h2>
+          <div className="home-extension-panel">
+            <div className="home-extension-main">
+              <div className="home-extension-kicker">UNPACKED EXTENSION ZIP</div>
+              <p>
+                Download the Chrome extension package, unzip it, and load the unpacked folder from Chrome's Extensions page.
+                Enter your deployed diarization WebSocket endpoint in the popup before starting capture.
+              </p>
+              <a className="home-btn-primary home-extension-download" href="/recognize-extension.zip" download>
+                Download Extension ZIP
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </a>
+            </div>
+            <ol className="home-extension-steps">
+              <li>Open <span>chrome://extensions</span>.</li>
+              <li>Enable <span>Developer mode</span>.</li>
+              <li>Click <span>Load unpacked</span> and select the unzipped extension folder.</li>
+              <li>Join Google Meet, open Recognize.AI, enter the <span>wss://.../ws</span> endpoint, then press Start.</li>
+            </ol>
+          </div>
+        </section>
+
         {/* ── Google Meet showcase ── */}
         <section className="home-section">
           <div className="home-section-label">IN ACTION</div>

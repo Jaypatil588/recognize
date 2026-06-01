@@ -10,12 +10,21 @@ import { api }             from './api'
 
 export default function App() {
   const setGraphData = useStore(s => s.setGraphData)
+  const setBackendOk = useStore(s => s.setBackendOk)
   const currentPage  = useStore(s => s.currentPage)
   const [transcriptOpen, setTranscriptOpen] = useState(false)
 
   useEffect(() => {
-    api.graph().then(setGraphData).catch(() => {})
-  }, [setGraphData])
+    api.graph()
+      .then(data => {
+        setGraphData(data)
+        setBackendOk(true)
+      })
+      .catch(err => {
+        setBackendOk(false)
+        console.error('Neo4j graph load failed:', err)
+      })
+  }, [setBackendOk, setGraphData])
 
   if (currentPage === 'home')      return <Home />
   if (currentPage === 'dashboard') return <Dashboard />
